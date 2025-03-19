@@ -3,13 +3,14 @@ import {
     Outlet, 
     useLoaderData,
     Form,
+    redirect,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 
 
 export async function action () {
     const contact = await createContact();
-    return {contact};
+    return redirect(`/contacts/${contact.id}`);
 };
 
 export async function loader() {
